@@ -1,0 +1,306 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f9fc;
+    color: #333;
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Navbar */
+nav {
+    background-color: #004d99;
+    color: white;
+    padding: 1rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 1.5rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffcc00;
+}
+
+.container {
+    width: 85%;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Section Titles */
+section h2 {
+    color: #004d99;
+    border-bottom: 3px solid #004d99;
+    padding-bottom: 8px;
+    margin-bottom: 25px;
+    font-size: 1.6em;
+}
+
+/* Card Layout */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 240px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #333;
+    font-size: 1.3em;
+    margin: 0 0 10px;
+}
+
+.card .price {
+    color: #e14e4e;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.card p {
+    font-size: 0.9em;
+    color: #666;
+    margin: 5px 0;
+}
+
+.card button.get-plans {
+    background-color: #0073e6; /* Light blue color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 0.9em;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: auto; /* Ensures button aligns at the end */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.card button.get-plans:hover {
+    background-color: #005bb5; /* Darker blue on hover */
+}
+
+
+/* Footer */
+footer {
+    background-color: #004d99;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* Modal Background */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    padding-top: 50px; 
+    box-sizing: border-box;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%; 
+    max-width: 500px; 
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); 
+}
+
+/* Close Button */
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover, .close-btn:focus {
+    color: black;
+}
+
+/* Button Styling for Modal */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/* Close Button Specific Style */
+button[onclick="closeModal()"] {
+    background-color: #e0e0e0;
+    color: #333;
+    margin-right: 10px;
+}
+
+button[onclick="closeModal()"]:hover {
+    background-color: #ccc;
+}
+
+/* Buy Now Button Specific Style */
+button[onclick^="buyNow"] {
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button[onclick^="buyNow"]:hover {
+    background-color: #45a049;
+    box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.15);
+}
+
+/* Right-align button in Navbar */
+#contact-button {
+    background-color: #ffcc00;
+    color: #004d99;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-left: auto;
+}
+
+#contact-button:hover {
+    background-color: #ffd633;
+}
+
+/* Navbar Button */
+#contact-button {
+    background-color: #ffcc00;
+    color: #004d99;
+    font-weight: bold;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    margin-left: auto;
+}
+
+#contact-button:hover {
+    background-color: #e6b800;
+}
+
+/* Flex alignment to move the button to the right side */
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-info-box {
+    display: none; 
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    padding: 20px;
+    background-color: #f1f1f1; 
+    border: 1px solid #ddd; 
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); 
+    border-radius: 8px; 
+    width: 300px; 
+    z-index: 1000; 
+    text-align: center; 
+}
+
+/* Style for the close button */
+.close-btn {
+    cursor: pointer;      
+    font-size: 20px;   
+    margin-left: 10px;    
+}
