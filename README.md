@@ -36,6 +36,10 @@
 ---
  <img src="Video Call feature.jpeg" />
 
+ ----
+  <img src="Insurance VC .jpg" />
+
+
 
 ---
 
@@ -108,6 +112,12 @@
 - **Car Info API** (Car Details Lookup)
 - **Google Maps API** (Repair Shop Locator)
 - **Isolation Forest** (Fraud Detection)
+
+
+-----
+
+### Tech Stack
+ <img src="Tech Stack.jpg" />
 
 ---
 
