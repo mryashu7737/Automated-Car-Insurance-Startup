@@ -1,0 +1,19 @@
+# src/insurance_claim_project/config/tasks.yaml
+
+fetch_firebase_data:
+  description: >
+    Retrieve patient and insurance details from Firebase for the form.
+  expected_output: >
+    A dictionary with the patient's information and claim-relevant details.
+
+extract_policy_data:
+  description: >
+    Extract policy information, such as policy number and coverage details, from the policy document.
+  expected_output: >
+    A dictionary containing policy-related information essential for the claim.
+
+fill_and_submit_form:
+  description: >
+    Using data from Firebase and the policy document, complete the insurance claim form and submit it.
+  expected_output: >
+    Confirmation that the form has been filled and submitted successfully.
