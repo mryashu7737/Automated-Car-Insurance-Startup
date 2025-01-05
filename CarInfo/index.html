@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Car Damage Detection</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+    #video, #output {
+      width: 500px;
+      border: 2px solid #ccc;
+      margin-top: 20px;
+    }
+    #start, #stop {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Live Car Damage Detection</h1>
+  <video id="video" autoplay></video>
+  <canvas id="output" style="display: none;"></canvas>
+  <button id="start">Start Detection</button>
+  <button id="stop" style="display: none;">Stop Detection</button>
+
+  <script>
+    const video = document.getElementById('video');
+    const outputCanvas = document.getElementById('output');
+    const ctx = outputCanvas.getContext('2d');
+    let detectionInterval;
+    const API_KEY = "yBvlPtvwZ3xwA0InnSuZ";
+    const MODEL_ID = "damaged-vehicle-images/3";
+    
+    // Access the webcam
+    async function startCamera() {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      video.srcObject = stream;
+      outputCanvas.width = video.videoWidth;
+      outputCanvas.height = video.videoHeight;
+      outputCanvas.style.display = "block";
+    }
+
+    // Capture and process the frame every 1 second
+    async function startDetection() {
+      detectionInterval = setInterval(async () => {
+        // Draw video frame to canvas
+        ctx.drawImage(video, 0, 0, outputCanvas.width, outputCanvas.height);
+
+        // Convert canvas to base64 without data URL prefix
+        const imageUrl = outputCanvas.toDataURL("image/jpeg", 0.8).split(",")[1]; // Adjust quality if needed
+
+        // Send to Roboflow API
+        try {
+          const response = await fetch(`https://detect.roboflow.com/${MODEL_ID}?api_key=${API_KEY}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ image: imageUrl })
+          });
+
+          if (!response.ok) {
+            console.error("Roboflow API error:", await response.text());
+            return;
+          }
+
+          const result = await response.json();
+          console.log("Roboflow API response:", result);
+          drawBoundingBoxes(result);
+        } catch (error) {
+          console.error("Network or API error:", error);
+        }
+      }, 1000); // Run detection every second
+    }
+
+    // Draw bounding boxes
+    function drawBoundingBoxes(result) {
+      ctx.clearRect(0, 0, outputCanvas.width, outputCanvas.height); // Clear previous frames
+      ctx.drawImage(video, 0, 0, outputCanvas.width, outputCanvas.height); // Draw current frame
+
+      if (result && result.predictions) {
+        result.predictions.forEach(prediction => {
+          const { x, y, width, height, confidence, class: damageType } = prediction.bounding_box;
+
+          // Draw bounding box
+          ctx.strokeStyle = "blue";
+          ctx.lineWidth = 2;
+          ctx.strokeRect(x - width / 2, y - height / 2, width, height);
+
+          // Draw label
+          ctx.fillStyle = "blue";
+          ctx.font = "16px Arial";
+          ctx.fillText(`${damageType} (${(confidence * 100).toFixed(2)}%)`, x - width / 2, y - height / 2 - 10);
+        });
+      } else {
+        console.warn("No predictions received from the API.");
+      }
+    }
+
+    // Start and stop detection on button clicks
+    document.getElementById('start').addEventListener('click', () => {
+      startDetection();
+      document.getElementById('start').style.display = 'none';
+      document.getElementById('stop').style.display = 'inline';
+    });
+
+    document.getElementById('stop').addEventListener('click', () => {
+      clearInterval(detectionInterval);
+      document.getElementById('start').style.display = 'inline';
+      document.getElementById('stop').style.display = 'none';
+    });
+
+    // Start the camera when the page loads
+    window.onload = startCamera;
+  </script>
+</body>
+</html>

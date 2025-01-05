@@ -1,0 +1,5 @@
+{
+    "numerical_features": ["claim_amount", "repair_costs", "claim_frequency_per_policyholder", "time_since_policy_issue"],
+    "categorical_features": ["type_of_accident"]
+}
+  
