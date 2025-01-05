@@ -17,7 +17,7 @@
 - Quickly detects damage to your car through uploaded images.
 - Provides an estimated repair cost based on the severity and type of damage.
 
-![Car Damage Detection](repo/Car Damage Car.png)
+![Car Damage Detection](Car Damage Car.png)
 
 ---
 
