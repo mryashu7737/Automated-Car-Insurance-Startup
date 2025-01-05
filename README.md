@@ -8,6 +8,10 @@
 
 **Automated Car Insurance** is a cutting-edge web application designed to simplify and automate the car insurance process. By leveraging advanced technologies such as YOLOv8, React.js, and Firebase, the platform provides seamless features to enhance user experience, from car damage detection to insurance filing.
 
+----
+ <img src="Home page Car.png" />
+
+
 ---
 
 ## Key Features
@@ -17,11 +21,10 @@
 - Quickly detects damage to your car through uploaded images.
 - Provides an estimated repair cost based on the severity and type of damage.
 
-![Car Damage Detection](Automated-Car-Insurance-Startup
-/Car Damage Car.png)
+---
+
  <img src="Car Damage Car.png" />
-   <h2 align="center">Tax-Website</h2>
-   <br><br>
+   
 
 ---
 
@@ -30,7 +33,9 @@
 - Directly connect with an inspector via video call to verify car damages.
 - Real-time communication ensures a transparent process.
 
-![Video Call Feature](repo/images/video-call-feature.png)
+---
+ <img src="Video Call feature.jpeg" />
+
 
 ---
 
@@ -39,7 +44,9 @@
 - Retrieve detailed information about your car by simply entering the car number.
 - Provides insights such as registration details, model, and owner information.
 
-![Car Details Lookup](repo/images/car-details-lookup.png)
+---
+ <img src="Car_Details.png" />
+
 
 ---
 
@@ -48,7 +55,9 @@
 - Identifies potential fraud attempts during the insurance claim process.
 - Ensures secure and trustworthy transactions for all parties.
 
-![Fraud Detection](repo/images/fraud-detection.png)
+---
+ <img src="image.png" />
+
 
 ---
 
@@ -57,7 +66,9 @@
 - Helps users find the nearest car repair shops.
 - Displays repair shop ratings, reviews, and distance for convenience.
 
-![Car Repair Locator](repo/images/car-repair-locator.png)
+---
+ <img src="Repair Feature.png" />
+
 
 ---
 
@@ -66,7 +77,9 @@
 - Offers a platform to compare multiple insurance options.
 - Enables users to purchase a new policy if they don’t already have one.
 
-![Insurance Comparison](repo/images/insurance-comparison.png)
+---
+ <img src="Car Insurance pic.png" />
+
 
 ---
 
@@ -75,7 +88,9 @@
 - Gathers all your details saved in the admin panel.
 - Files the insurance claim form in just one click, streamlining the process.
 
-![Automated Insurance Filing](repo/images/insurance-filing.png)
+---
+ <img src="Admin Board.png" />
+
 
 ---
 
